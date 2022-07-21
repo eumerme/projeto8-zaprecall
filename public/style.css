@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@400;700&family=Righteous&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Recursive', sans-serif;
+    font-weight: 400;
+    color: #333333;
+}
+
+ion-icon {
+    font-size: 32px;
+    color: #333333;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.root {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FB6B6B;
+}
+
+.welcome-page {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.welcome-page > h1, 
+.top > h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 36px;
+    color: #ffffff;
+    margin: 23px 0 46px 0;
+}
+
+.top > h1 {
+   margin: 0 0 0 15px;
+}
+
+.start-game {
+    width: 246px;
+    height: 54px;
+    font-size: 18px;
+    color: #D70900;
+    border: 1px solid #D70900;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+}
+
+.top {
+    width: 100%;
+    height: 100px;
+    background-color: #FB6B6B;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.flashcards  {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.flashcard-face,
+.flashcard-backface  {
+    width: 300px;
+    height: 65px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.flashcard-backface {
+    min-height: 131px;
+    max-height: 244px;
+    background-color: #FFFFD4;
+    position: relative;
+}
+
+.flashcard-backface > img {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.flashcard-backface > h1 {
+    font-size: 18px;    
+    line-height: 21px;
+}
+
+.options {
+    display: flex;
+    flex-direction: row; 
+    position: absolute;
+    bottom: 15px;
+    left: 5px;
+}
+
+.didnt-remember,
+.almost-didnt-remember,
+.zap {
+    width: 85px;
+    height: 37px;
+    font-size: 12px;
+    padding: 0 10px;
+    color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #FF3030;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    margin: 0 6px;
+}
+
+.almost-didnt-remember {
+    background-color: #FF922E;
+}
+
+.zap {
+    background-color: #2FBE34;
+}
+
+.bottom {
+    width: 100%;
+    min-height: 70px;
+    max-height: 244px;
+    font-size: 18px;
+    background-color: #ffffff;
+    padding: 15px 30px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    line-height: 21px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.title.wrong, 
+.icons ion-icon[name=close-circle] {
+    color: #FF3030;
+    text-decoration: line-through;
+}
+
+.title.question,
+.icons ion-icon[name=help-circle] {
+    color: #FF922E;
+    text-decoration: line-through;
+}
+
+.title.check,
+.icons ion-icon[name=checkmark-circle] {
+    color: #2FBE34;
+    text-decoration: line-through;
+}
+
+.result {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+}
+
+.result > h1 {
+    margin-left: 15px;
+}
+
+.message {
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0;
+}
