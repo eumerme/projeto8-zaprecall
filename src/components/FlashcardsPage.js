@@ -39,9 +39,10 @@ const flashcardsArray = [
 ]
 
 const deckFlashcards = [];
-function shuffle(){
+const deck = Math.round(flashcardsArray.length/2);
+function shuffle() {
     flashcardsArray.sort(() => Math.random() - 0.5);
-    for(let i = 0; i < flashcardsArray.length/2; i++) {
+    for(let i = 0; i < deck; i++) {
         deckFlashcards.push(flashcardsArray[i]);
     }
 }
@@ -49,7 +50,8 @@ shuffle();
 
 export default function FlashcardsPage() {
     const [answered, setAnswered] = React.useState(0);
-    /* const [icon, setIcon] = React.useState([]); */
+    const [bottomIcon, setBottomIcon] = React.useState([]);
+    const [didntRemember, setDidntRemember] = React.useState(false);
 
     return (
         <>
@@ -62,14 +64,22 @@ export default function FlashcardsPage() {
             {deckFlashcards.map((card, index) => (
                 <Flashcards 
                     key={index}
-                    index={index+1}
-                    card={card}
+                    index={index + 1}
+                    question={card.question}
+                    answer={card.answer}
                     answered={answered}
-                    setAnswered={setAnswered}/>
+                    setAnswered={setAnswered}
+                    bottomIcon={bottomIcon}
+                    setBottomIcon={setBottomIcon}
+                    setDidntRemember={setDidntRemember} />
             ))}
             </div>
 
-            <Bottom answered={answered} setAnswered={setAnswered} />
+            <Bottom
+                answered={answered}
+                bottomIcon={bottomIcon}
+                deck={deck}
+                didntRemember={didntRemember} />
         </>
     );
 }

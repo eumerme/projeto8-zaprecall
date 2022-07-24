@@ -6,7 +6,7 @@ export default function WelcomePage({startPage, setStartPage}) {
         <div className="welcome-page center">
             <img src={logo} alt="logo" />
             <h1>ZapRecall</h1>
-            <div className="start-game center" onClick={() => setStartPage(!startPage)}>Iniciar Reacall!</div>
+            <div className="start-game center" onClick={() => setStartPage(!startPage)}>Iniciar Recall!</div>
         </div>
     );
 }
