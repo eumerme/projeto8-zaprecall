@@ -107,7 +107,6 @@ ion-icon {
 .backface > h1 {
     font-size: 18px;    
     line-height: 21px;
-    text-align: center;
 }
 
 .options {
@@ -145,7 +144,8 @@ ion-icon {
 .bottom {
     width: 100%;
     min-height: 70px;
-    max-height: 244px;
+    /* max-height: 244px; */
+    height: auto;
     font-size: 18px;
     background-color: #ffffff;
     padding: 15px 30px;
@@ -164,19 +164,19 @@ ion-icon {
 }
 
 .title.wrong, 
-.icons ion-icon[name=close-circle] {
+ion-icon[name=close-circle] {
     color: #FF3030;
     text-decoration: line-through;
 }
 
 .title.question,
-.icons ion-icon[name=help-circle] {
+ion-icon[name=help-circle] {
     color: #FF922E;
     text-decoration: line-through;
 }
 
 .title.check,
-.icons ion-icon[name=checkmark-circle] {
+ion-icon[name=checkmark-circle] {
     color: #2FBE34;
     text-decoration: line-through;
 }

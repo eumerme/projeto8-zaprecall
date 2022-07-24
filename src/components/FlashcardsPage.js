@@ -7,49 +7,41 @@ const flashcardsArray = [
     {
         question: "O que é JSX?",
         answer: "JSX é uma sintaxe para escrever HTML dentro do JS",
-        tapped: false,
     },
     {
-        question: "O React é __",
+        question: "O React é ...",
         answer: "uma biblioteca JavaScript para construção de interfaces",
-        tapped: false,
     },
     {
-        question: "Componentes devem iniciar com __",
+        question: "Componentes devem iniciar com ...",
         answer: "letra maiúscula",
-        tapped: false,
     },
     {
-        question: "Podemos colocar __ dentro do JSX",
+        question: "Podemos colocar ... dentro do JSX",
         answer: "expressões",
-        tapped: false,
     },
     {
-        question: "O ReactDOM nos ajuda __",
+        question: "O ReactDOM nos ajuda ...",
         answer: "interagindo com a DOM para colocar componentes React na mesma",
-        tapped: false,
     },
     {
-        question: " Usamos o npm para __",
+        question: "Usamos o npm para ...",
         answer: "gerenciar os pacotes necessários e suas dependências",
-        tapped: false,
     },
     {
-        question: "PUsamos props para __",
+        question: "Usamos props para ...",
         answer: "passar diferentes informações para componentes",
-        tapped: false,
     },
     {
-        question: "Usamos estado (state) para __",
+        question: "Usamos estado (state) para ...",
         answer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
-        tapped: false,
     },
 ]
 
 const deckFlashcards = [];
 function shuffle(){
     flashcardsArray.sort(() => Math.random() - 0.5);
-    for(let i = 0; i < 4; i++) {
+    for(let i = 0; i < flashcardsArray.length/2; i++) {
         deckFlashcards.push(flashcardsArray[i]);
     }
 }
@@ -57,20 +49,7 @@ shuffle();
 
 export default function FlashcardsPage() {
     const [answered, setAnswered] = React.useState(0);
-    const [icons, setIcons] = React.useState([]);
-
-
-    const choice = (option) => {
-        setAnswered(answered+1);
-        
-        if(option === "didnt-remember") {
-            alert("ruim");
-        } else if (option === "almost-didnt-remember") {
-            alert("quase");
-        } else if (option === "zap"){
-            alert("top");
-        }
-    }
+    /* const [icon, setIcon] = React.useState([]); */
 
     return (
         <>
@@ -81,7 +60,12 @@ export default function FlashcardsPage() {
 
             <div className="flashcards center">
             {deckFlashcards.map((card, index) => (
-                <Flashcards key={index} index={index+1} card={card} choice={choice}/>
+                <Flashcards 
+                    key={index}
+                    index={index+1}
+                    card={card}
+                    answered={answered}
+                    setAnswered={setAnswered}/>
             ))}
             </div>
 
