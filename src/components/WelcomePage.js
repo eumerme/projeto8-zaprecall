@@ -1,10 +1,12 @@
-export default function WelcomePage({page, setPage}) {
+import logo from "./assets/images/logo.png";
+
+export default function WelcomePage({startPage, setStartPage}) {
     
     return (
         <div className="welcome-page center">
-            <img src="./images/logo.png" alt="logo" />
+            <img src={logo} alt="logo" />
             <h1>ZapRecall</h1>
-            <div className="start-game center" onClick={() => setPage(!page)}>Iniciar Reacall!</div>
+            <div className="start-game center" onClick={() => setStartPage(!startPage)}>Iniciar Reacall!</div>
         </div>
     );
 }

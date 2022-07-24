@@ -1,6 +1,7 @@
 import React from "react";
 import Flashcards from "./Flashcards";
 import Bottom from "./Bottom";
+import smallLogo from "./assets/images/logo-pequeno.png";
 
 const flashcardsArray = [
     {
@@ -55,20 +56,36 @@ function shuffle(){
 shuffle();
 
 export default function FlashcardsPage() {
+    const [answered, setAnswered] = React.useState(0);
+    const [icons, setIcons] = React.useState([]);
+
+
+    const choice = (option) => {
+        setAnswered(answered+1);
+        
+        if(option === "didnt-remember") {
+            alert("ruim");
+        } else if (option === "almost-didnt-remember") {
+            alert("quase");
+        } else if (option === "zap"){
+            alert("top");
+        }
+    }
+
     return (
         <>
             <div className="top center">
-                <img src="./images/logo-pequeno.png" alt="logo" />
+                <img src={smallLogo} alt="logo" />
                 <h1>ZapRecall</h1>
             </div>
 
             <div className="flashcards center">
             {deckFlashcards.map((card, index) => (
-                <Flashcards key={index} index={index+1} card={card} />
+                <Flashcards key={index} index={index+1} card={card} choice={choice}/>
             ))}
             </div>
 
-            <Bottom />
+            <Bottom answered={answered} setAnswered={setAnswered} />
         </>
     );
 }

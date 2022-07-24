@@ -1,4 +1,4 @@
-export default function Bottom() {
+export default function Bottom({ answered, setAnswered }) {
     return (
         <div className="bottom center">
             {/*                 <div className="result">
@@ -13,11 +13,11 @@ export default function Bottom() {
                 </div>
                 
                 <div className="message">Ainda faltam alguns... Mas não desanime!</div> */}
-            <p>0/4 CONCLUÍDOS</p>
+            <p>{answered}/4 CONCLUÍDOS</p>
             <div className="icons">
-                <ion-icon name="close-circle"></ion-icon>
+               {/*  <ion-icon name="close-circle"></ion-icon>
                 <ion-icon name="help-circle"></ion-icon>
-                <ion-icon name="checkmark-circle"></ion-icon>
+                <ion-icon name="checkmark-circle"></ion-icon> */}
             </div>
         </div>
     );
