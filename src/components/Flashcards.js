@@ -13,7 +13,8 @@ export default function Flashcards({
 }) {
     const [isTapped, setIsTapped] = React.useState(true);
     const [optionAnswered, setOptionAnswered] = React.useState("");
-    const [icon, setIcon] = React.useState("play-outline");
+    const [icon, setIcon] = React.useState("");
+    const [tapped, setTapped] = React.useState(false);
 
     const choice = (option) => {
         setAnswered(answered + 1);
@@ -35,19 +36,22 @@ export default function Flashcards({
             setBottomIcon([...bottomIcon, "checkmark-circle"]);
         }
 
-        setIsTapped(true);
-    }
+        setIsTapped(!isTapped);
+        setTapped(!tapped);
+    };
 
     return (
         <>
             {isTapped ? (
                 <Frontface
                     index={index}
+                    isTapped={isTapped}
                     setIsTapped={setIsTapped}
                     optionAnswered={optionAnswered}
-                    icon={icon}/>
+                    icon={icon}
+                    tapped={tapped} />
             ) : (
-                <Backface 
+                <Backface
                     question={question}
                     answer={answer}
                     choice={choice} />
@@ -56,11 +60,22 @@ export default function Flashcards({
     );
 }
 
-function Frontface({ index, setIsTapped, optionAnswered, icon }) {
+function Frontface({
+    index,
+    isTapped,
+    setIsTapped,
+    optionAnswered,
+    icon,
+    tapped
+}) {
     return (
         <div className="frontface center">
             <h1 className={`title ${optionAnswered}`}>Pergunta {index}</h1>
-            <ion-icon name={icon} onClick={()=> {setIsTapped(false)}}></ion-icon>
+            {tapped ? (
+                <ion-icon name={icon}></ion-icon>
+            ) : (
+                <ion-icon name="play-outline" onClick={() => { setIsTapped(!isTapped) }}></ion-icon>
+            )}
         </div>
     );
 }
@@ -73,13 +88,15 @@ function Backface({ question, answer, choice }) {
             {isTapped ? (
                 <>
                     <h1>{question}</h1>
-                    <img src={setinha} onClick={() => { setIsTapped(false) }} alt="setinha" />
+                    <img src={setinha} onClick={() => { setIsTapped(!isTapped) }} alt="setinha" />
                 </>
             ) : (
                 <>
                     <h1>{answer}</h1>
                     <div className="options">
-                        <div className="didnt-remember center" onClick={() => { choice("didnt-remember") }}>Não lembrei</div>
+                        <div
+                            className="didnt-remember center"
+                            onClick={() => { choice("didnt-remember") }}>Não lembrei</div>
                         <div className="almost-didnt-remember center" onClick={() => { choice("almost-didnt-remember") }}>Quase não lembrei</div>
                         <div className="zap center" onClick={() => { choice("zap") }}>Zap!</div>
                     </div>

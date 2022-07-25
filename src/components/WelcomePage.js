@@ -1,7 +1,7 @@
 import logo from "./assets/images/logo.png";
 
-export default function WelcomePage({startPage, setStartPage}) {
-    
+export default function WelcomePage({ startPage, setStartPage }) {
+
     return (
         <div className="welcome-page center">
             <img src={logo} alt="logo" />

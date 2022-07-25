@@ -9,13 +9,13 @@ export default function Bottom({ answered, bottomIcon, deck, didntRemember }) {
             ) : ("")}
             <p>{answered}/{deck} CONCLUÍDOS</p>
             <div className="icons">
-                {bottomIcon.map((icon, index) => <ion-icon name={icon} key={index}></ion-icon>)}
+                {bottomIcon.map((icon, index) => (<ion-icon name={icon} key={index}></ion-icon>))}
             </div>
         </div>
     );
 }
 
-function Message({didntRemember}) {
+function Message({ didntRemember }) {
     return (
         (didntRemember) ? (
             <>

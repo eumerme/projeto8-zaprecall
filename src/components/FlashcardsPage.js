@@ -39,10 +39,10 @@ const flashcardsArray = [
 ]
 
 const deckFlashcards = [];
-const deck = Math.round(flashcardsArray.length/2);
+const deck = Math.round(flashcardsArray.length / 2);
 function shuffle() {
     flashcardsArray.sort(() => Math.random() - 0.5);
-    for(let i = 0; i < deck; i++) {
+    for (let i = 0; i < deck; i++) {
         deckFlashcards.push(flashcardsArray[i]);
     }
 }
@@ -61,18 +61,18 @@ export default function FlashcardsPage() {
             </div>
 
             <div className="flashcards center">
-            {deckFlashcards.map((card, index) => (
-                <Flashcards 
-                    key={index}
-                    index={index + 1}
-                    question={card.question}
-                    answer={card.answer}
-                    answered={answered}
-                    setAnswered={setAnswered}
-                    bottomIcon={bottomIcon}
-                    setBottomIcon={setBottomIcon}
-                    setDidntRemember={setDidntRemember} />
-            ))}
+                {deckFlashcards.map((card, index) => (
+                    <Flashcards
+                        key={index}
+                        index={index + 1}
+                        question={card.question}
+                        answer={card.answer}
+                        answered={answered}
+                        setAnswered={setAnswered}
+                        bottomIcon={bottomIcon}
+                        setBottomIcon={setBottomIcon}
+                        setDidntRemember={setDidntRemember} />
+                ))}
             </div>
 
             <Bottom
