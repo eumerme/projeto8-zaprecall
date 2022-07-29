@@ -12,7 +12,7 @@ export default function App() {
             {startPage ? (
                 <WelcomePage startPage={startPage} setStartPage={setStartPage} />
             ) : (
-                <FlashcardsPage />
+                <FlashcardsPage startPage={startPage} setStartPage={setStartPage} />
             )}
         </>
     );

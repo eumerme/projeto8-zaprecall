@@ -1,20 +1,6 @@
 import sad from "./assets/images/sad.png";
 import party from "./assets/images/party.png";
 
-export default function Bottom({ answered, bottomIcon, deck, didntRemember }) {
-    return (
-        <div className="bottom center">
-            {deck === answered ? (
-                <Message didntRemember={didntRemember} />
-            ) : ("")}
-            <p>{answered}/{deck} CONCLUÍDOS</p>
-            <div className="icons">
-                {bottomIcon.map((icon, index) => (<ion-icon name={icon} key={index}></ion-icon>))}
-            </div>
-        </div>
-    );
-}
-
 function Message({ didntRemember }) {
     return (
         (didntRemember) ? (
@@ -34,5 +20,22 @@ function Message({ didntRemember }) {
                 <div className="message">Você não esqueceu de nenhum flashcard!</div>
             </>
         )
+    );
+}
+
+export default function Bottom({ answered, bottomIcon, deck, didntRemember, startPage, setStartPage }) {
+    return (
+        <div className="bottom center">
+            {deck === answered ? (
+                <Message didntRemember={didntRemember} />
+            ) : ("")}
+            <p>{answered}/{deck} CONCLUÍDOS</p>
+            <div className="icons">
+                {bottomIcon.map((icon, index) => (<ion-icon name={icon} key={index}></ion-icon>))}
+            </div>
+            {deck === answered ? (
+                <div className="restart-button center" onClick={() => { setStartPage(!startPage) }}>Reiniciar Recall</div>
+            ) : ("")}
+        </div>
     );
 }

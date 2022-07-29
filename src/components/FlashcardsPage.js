@@ -48,7 +48,7 @@ function shuffle() {
 }
 shuffle();
 
-export default function FlashcardsPage() {
+export default function FlashcardsPage({ startPage, setStartPage }) {
     const [answered, setAnswered] = React.useState(0);
     const [bottomIcon, setBottomIcon] = React.useState([]);
     const [didntRemember, setDidntRemember] = React.useState(false);
@@ -79,7 +79,9 @@ export default function FlashcardsPage() {
                 answered={answered}
                 bottomIcon={bottomIcon}
                 deck={deck}
-                didntRemember={didntRemember} />
+                didntRemember={didntRemember}
+                startPage={startPage}
+                setStartPage={setStartPage} />
         </>
     );
 }

@@ -1,6 +1,50 @@
 import React from "react";
 import setinha from "./assets/images/setinha.png";
 
+function Frontface({
+    index,
+    isTapped,
+    setIsTapped,
+    optionAnswered,
+    icon,
+    tapped
+}) {
+    return (
+        <div className="frontface center">
+            <h1 className={`title ${optionAnswered}`}>Pergunta {index}</h1>
+            {tapped ? (
+                <ion-icon name={icon}></ion-icon>
+            ) : (
+                <ion-icon name="play-outline" onClick={() => { setIsTapped(!isTapped) }}></ion-icon>
+            )}
+        </div>
+    );
+}
+
+function Backface({ question, answer, choice }) {
+    const [isTapped, setIsTapped] = React.useState(true);
+
+    return (
+        <div className="backface">
+            {isTapped ? (
+                <>
+                    <h1>{question}</h1>
+                    <img src={setinha} onClick={() => { setIsTapped(!isTapped) }} alt="setinha" />
+                </>
+            ) : (
+                <>
+                    <h1>{answer}</h1>
+                    <div className="options">
+                        <div className="didnt-remember center" onClick={() => { choice("didnt-remember") }}>Não lembrei</div>
+                        <div className="almost-didnt-remember center" onClick={() => { choice("almost-didnt-remember") }}>Quase não lembrei</div>
+                        <div className="zap center" onClick={() => { choice("zap") }}>Zap!</div>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+}
+
 export default function Flashcards({
     index,
     question,
@@ -57,51 +101,5 @@ export default function Flashcards({
                     choice={choice} />
             )}
         </>
-    );
-}
-
-function Frontface({
-    index,
-    isTapped,
-    setIsTapped,
-    optionAnswered,
-    icon,
-    tapped
-}) {
-    return (
-        <div className="frontface center">
-            <h1 className={`title ${optionAnswered}`}>Pergunta {index}</h1>
-            {tapped ? (
-                <ion-icon name={icon}></ion-icon>
-            ) : (
-                <ion-icon name="play-outline" onClick={() => { setIsTapped(!isTapped) }}></ion-icon>
-            )}
-        </div>
-    );
-}
-
-function Backface({ question, answer, choice }) {
-    const [isTapped, setIsTapped] = React.useState(true);
-
-    return (
-        <div className="backface">
-            {isTapped ? (
-                <>
-                    <h1>{question}</h1>
-                    <img src={setinha} onClick={() => { setIsTapped(!isTapped) }} alt="setinha" />
-                </>
-            ) : (
-                <>
-                    <h1>{answer}</h1>
-                    <div className="options">
-                        <div
-                            className="didnt-remember center"
-                            onClick={() => { choice("didnt-remember") }}>Não lembrei</div>
-                        <div className="almost-didnt-remember center" onClick={() => { choice("almost-didnt-remember") }}>Quase não lembrei</div>
-                        <div className="zap center" onClick={() => { choice("zap") }}>Zap!</div>
-                    </div>
-                </>
-            )}
-        </div>
     );
 }
